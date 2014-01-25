@@ -1,14 +1,35 @@
 
 package FRC867.DeltaZero;
 
+import FRC867.DeltaZero.commands.ToggleShooter;
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.DigitalIOButton;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
+    Joystick gamePad = new Joystick(1);
+    Button buttonA = new JoystickButton(gamePad, 1),
+            buttonB = new JoystickButton(gamePad, 2),
+            buttonX = new JoystickButton(gamePad, 3),
+            buttonY = new JoystickButton(gamePad, 4);
+    
+    public double getMovement(){
+        return gamePad.getRawAxis(5);
+    }
+    
+    public double getTurn(){
+        return gamePad.getRawAxis(4);
+    }
+    
+    public OI(){
+        buttonA.whenPressed(new ToggleShooter());
+    }
+    
     //// CREATING BUTTONS
     // One type of button is a joystick button which is any button on a joystick.
     // You create one by telling it which joystick it's on and which button
