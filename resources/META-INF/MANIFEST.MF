@@ -1,0 +1,6 @@
+MIDlet-Name: DeltaZeroTest
+MIDlet-Version: 1.0.0
+MIDlet-Vendor: FIRST
+MIDlet-1: DeltaZero, , FRC867.DeltaZero.DeltaZero
+MicroEdition-Profile: IMP-1.0
+MicroEdition-Configuration: CLDC-1.1
