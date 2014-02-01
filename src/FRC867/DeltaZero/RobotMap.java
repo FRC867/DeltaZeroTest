@@ -12,8 +12,15 @@ public class RobotMap {
     
     public static final int ShooterAngle = 3;
     
-    public static final int ShooterWheel1 = 6;
-    public static final int ShooterWheel2 = 5;
+    public static final int ShooterWheel1 = 5;
+    public static final int ShooterWheel2 = 6;
     
     public static final int ShooterLoader = 10;
+    
+    public static final int PressureSwitch = 3; //3,4
+    
+    public static final int CompressorSpikeRelay = 7;
+    
+    public static final int SolenoidForward = 3;
+    public static final int SolenoidReverse = 4;
 }

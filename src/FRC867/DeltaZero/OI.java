@@ -1,6 +1,10 @@
 
 package FRC867.DeltaZero;
 
+import FRC867.DeltaZero.commands.ExtendCylinder;
+import FRC867.DeltaZero.commands.RetractCylinder;
+import FRC867.DeltaZero.commands.ShootFrisbee;
+import FRC867.DeltaZero.commands.StartCompressor;
 import FRC867.DeltaZero.commands.ToggleShooter;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -16,7 +20,8 @@ public class OI {
     Button buttonA = new JoystickButton(gamePad, 1),
             buttonB = new JoystickButton(gamePad, 2),
             buttonX = new JoystickButton(gamePad, 3),
-            buttonY = new JoystickButton(gamePad, 4);
+            buttonY = new JoystickButton(gamePad, 4),
+            buttonRB = new JoystickButton(gamePad, 6);
     
     public double getMovement(){
         return gamePad.getRawAxis(5);
@@ -26,8 +31,16 @@ public class OI {
         return gamePad.getRawAxis(4);
     }
     
+    public double getPitch(){
+        return gamePad.getRawAxis(2);
+    }
+    
     public OI(){
         buttonA.whenPressed(new ToggleShooter());
+        buttonRB.whenPressed(new ShootFrisbee());   
+        buttonX.whenPressed(new ExtendCylinder());
+        buttonY.whenPressed(new RetractCylinder());
+        buttonB.whenPressed(new StartCompressor());
     }
     
     //// CREATING BUTTONS

@@ -6,6 +6,7 @@
 package FRC867.DeltaZero.subsystems;
 
 import FRC867.DeltaZero.RobotMap;
+import FRC867.DeltaZero.commands.PitchWithGamepad;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -13,26 +14,29 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  *
  * @author Team-867
  */
-public class FrisbeeLoader extends Subsystem {
-    // Put methods for controlling this subsystem
-    // here. Call these from Commands.
+public class ShooterPitch extends Subsystem {
     
-    Victor loader = new Victor(RobotMap.ShooterLoader);
+    Victor pitchControl = new Victor(RobotMap.ShooterAngle);
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
+        setDefaultCommand(new PitchWithGamepad());
     }
     
-    public void push(){
-        loader.set(1);
+    public void pitchUp(){
+        pitchControl.set(1);
     }
     
-    public void stop(){
-        loader.set(0);
+    public void pitch(double pitchSpeed){
+        pitchControl.set(pitchSpeed);
     }
     
-    public void reset(){
-        loader.set(-1);
+    public void pitchStop(){
+        pitchControl.set(0);
+    }
+    
+    public void pitchDown(){
+        pitchControl.set(-1);
     }
 }

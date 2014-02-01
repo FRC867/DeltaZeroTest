@@ -9,41 +9,37 @@ package FRC867.DeltaZero.commands;
  *
  * @author Team-867
  */
-public class SpinUpShooter extends CommandBase {
+public class ResetLoader extends CommandBase {
     
-    private boolean wasSpinning;
-    
-    public SpinUpShooter() {
+    public ResetLoader() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-        requires(shooterWheels);
+        requires(frisbeeLoader);
+        this.setTimeout(.6);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-        wasSpinning = shooterWheels.isSpinning();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        shooterWheels.spinUp();        
-        this.setTimeout(3.2);
+        frisbeeLoader.reset();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        if(wasSpinning){
-            return true;
-        }
         return this.isTimedOut();
     }
 
     // Called once after isFinished returns true
     protected void end() {
+        frisbeeLoader.stop();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+        frisbeeLoader.stop();
     }
 }
